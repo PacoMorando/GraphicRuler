@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="unity_bar_width">35dp</dimen>
+    <dimen name="middle_unity_bar_width">28dp</dimen>
+    <dimen name="fraction_unity_bar_width">23dp</dimen>
+    <dimen name="unity_bar_height">2dp</dimen>
+    <dimen name="middle_unity_bar_height">1.5dp</dimen>
+    <dimen name="fraction_unity_bar_height">1dp</dimen>
+    <dimen name="numbers_size">20sp</dimen>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/one_twenty"
+        android:title="20" />
+    <item
+        android:id="@+id/one_twenty_five"
+        android:title="25" />
+    <item
+        android:id="@+id/one_fifty"
+        android:title="50" />
+    <item
+        android:id="@+id/one_seventy_five"
+        android:title="75" />
+    <item
+        android:id="@+id/one_one_hundred"
+        android:title="100" />
+    <item
+        android:id="@+id/one_one_hundred_twenty_five"
+        android:title="125" />
+    <item
+        android:id="@+id/one_two_hundred"
+        android:title="200" />
+    <item
+        android:id="@+id/one_two_hundred_fifty"
+        android:title="250" />
+    <item
+        android:id="@+id/one_five_hundred"
+        android:title="500" />
+</menu>
