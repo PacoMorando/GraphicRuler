@@ -4,27 +4,95 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 
+import com.example.graphicruler.controllers.CalculateFromResultController;
+import com.example.graphicruler.controllers.CalculateFromUnityController;
 import com.example.graphicruler.databinding.ActivityMainBinding;
+import com.example.graphicruler.models.ScalimeterBoard;
 import com.example.graphicruler.views.GraphicScaleRecyclerAdapter;
 import com.example.graphicruler.views.RulerRecyclerAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    private ActivityMainBinding activityMainBinding;
+    private ActivityMainBinding activityMainViewBinding;
+    private final int scale = 100;
+    private final ScalimeterBoard scalimeterBoard = new ScalimeterBoard(this.scale);
+    private final CalculateFromUnityController calculateFromUnityController = new CalculateFromUnityController(scalimeterBoard);
+    private final CalculateFromResultController calculateFromResultController = new CalculateFromResultController(scalimeterBoard);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = activityMainBinding.getRoot();
+        activityMainViewBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = activityMainViewBinding.getRoot();
         setContentView(view);
         hideSystemUI();
         rulerInit();
         graphicScaleInit();
+        activityMainViewBinding.unities.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (activityMainViewBinding.unities.hasFocus()){
+                    setScaledUnitiesResult();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        activityMainViewBinding.scaledUnities.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //CAMBIAR NOMBRE A LA CLASE, NO DEBERIA DE SER "FROM RESULT"
+                if (activityMainViewBinding.scaledUnities.hasFocus()){
+                    setUnitiesResult();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+    }
+
+    private void setUnitiesResult(){
+        if (this.activityMainViewBinding.scaledUnities.getText().length() == 0) {
+            this.activityMainViewBinding.unities.setText("0");
+        }
+        if (this.activityMainViewBinding.scaledUnities.getText().length() != 0) {
+            this.activityMainViewBinding.unities.setText(this.calculateFromResultController.calculateFromResult(Float.parseFloat(String.valueOf(this.activityMainViewBinding.scaledUnities.getText()))));
+        }
+    }
+
+    private void setScaledUnitiesResult(){
+        if (activityMainViewBinding.unities.getText().length() == 0) {
+            activityMainViewBinding.scaledUnities.setText("0");
+        }
+        if (activityMainViewBinding.unities.getText().length() != 0) {
+            activityMainViewBinding.scaledUnities.setText(calculateFromUnityController.calculateFromUnity(Float.parseFloat(String.valueOf(activityMainViewBinding.unities.getText()))));
+        }
     }
 
     private void hideSystemUI() {
@@ -40,20 +108,20 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     //ESTOS METODOS SE REPITEN, REFACTORIZAR
     private void rulerInit() {
-        this.activityMainBinding.rulerRecyclerView.setLayoutManager(this.setManagerForRulers());
+        this.activityMainViewBinding.rulerRecyclerView.setLayoutManager(this.setManagerForRulers());
         RulerRecyclerAdapter rulerRecyclerAdapter = new RulerRecyclerAdapter(this);
-        this.activityMainBinding.rulerRecyclerView.setAdapter(rulerRecyclerAdapter);
-        this.activityMainBinding.rulerRecyclerView.scrollToPosition(0);
+        this.activityMainViewBinding.rulerRecyclerView.setAdapter(rulerRecyclerAdapter);
+        this.activityMainViewBinding.rulerRecyclerView.scrollToPosition(0);
     }
 
     private void graphicScaleInit() {
-        this.activityMainBinding.graphicScaleRecyclerView.setLayoutManager(this.setManagerForRulers());
+        this.activityMainViewBinding.graphicScaleRecyclerView.setLayoutManager(this.setManagerForRulers());
         GraphicScaleRecyclerAdapter graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter(this);
-        this.activityMainBinding.graphicScaleRecyclerView.setAdapter(graphicScaleRecyclerAdapter);
-        this.activityMainBinding.graphicScaleRecyclerView.scrollToPosition(0);
+        this.activityMainViewBinding.graphicScaleRecyclerView.setAdapter(graphicScaleRecyclerAdapter);
+        this.activityMainViewBinding.graphicScaleRecyclerView.scrollToPosition(0);
     }
 
-    private LinearLayoutManager setManagerForRulers(){
+    private LinearLayoutManager setManagerForRulers() {
         LinearLayoutManager rulerLinearLayoutManager = new LinearLayoutManager(this) {
             @Override
             public boolean canScrollVertically() {
@@ -65,6 +133,22 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return rulerLinearLayoutManager;
     }
 
+    public void showScaleMenu(View view) {
+        PopupMenu scalePopupMenu = new PopupMenu(this, view);
+        scalePopupMenu.setOnMenuItemClickListener(this);
+        scalePopupMenu.inflate(R.menu.scale_menu);
+        scalePopupMenu.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        this.activityMainViewBinding.scaleFactor.setText(menuItem.getTitle());
+        this.scalimeterBoard.setScale(Integer.parseInt((String) menuItem.getTitle()));
+        this.setScaledUnitiesResult();
+        this.setUnitiesResult();
+        return false;
+    }
+
     //Este es para que se escondan las barras aunque se cambie de focus (que pase la aplicación a segundo plano)
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -74,56 +158,4 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         }
     }
 
-    public void showScaleMenu(View view) {
-        PopupMenu scalePopupMenu = new PopupMenu(this,view);
-        scalePopupMenu.setOnMenuItemClickListener(this);
-        scalePopupMenu.inflate(R.menu.scale_menu);
-        scalePopupMenu.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        return false;
-    }
-
 }
-
-   /* private void rulerInit() {
-        RecyclerView rulerRecyclerView = findViewById(R.id.ruler_recycler_view);
-        LinearLayoutManager rulerLinearLayoutManager = new LinearLayoutManager(this) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-        this.activityMainBinding.rulerRecyclerView;
-        rulerLinearLayoutManager.setReverseLayout(true);
-        rulerLinearLayoutManager.setStackFromEnd(true);
-        rulerRecyclerView.setLayoutManager(rulerLinearLayoutManager);
-        RulerRecyclerAdapter rulerRecyclerAdapter = new RulerRecyclerAdapter(this);
-        rulerRecyclerView.setAdapter(rulerRecyclerAdapter);
-        rulerRecyclerView.scrollToPosition(0);
-    }*/
-
- /*protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        hideSystemUI();
-        rulerInit();
-        graphicScaleInit();*/
-
-   /* private void graphicScaleInit() {
-        RecyclerView graphicScaleView = findViewById(R.id.graphic_scale_recycler_view);
-        LinearLayoutManager graphicScaleLayoutManager = new LinearLayoutManager(this) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-        graphicScaleLayoutManager.setReverseLayout(true);
-        graphicScaleLayoutManager.setStackFromEnd(true);
-        graphicScaleView.setLayoutManager(graphicScaleLayoutManager);
-        GraphicScaleRecyclerAdapter graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter(this);
-        graphicScaleView.setAdapter(graphicScaleRecyclerAdapter);
-        graphicScaleView.scrollToPosition(0);
-    }*/

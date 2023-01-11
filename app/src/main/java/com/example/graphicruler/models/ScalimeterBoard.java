@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ScalimeterBoard {
 
     private ArrayList<GraphicElement> graphicElements;
-    private ScaleCalculator scaleCalculator;
+    private final ScaleCalculator scaleCalculator;
     private MeasureBars measureBars;
 
     public ScalimeterBoard(float scale){
