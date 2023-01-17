@@ -7,7 +7,7 @@ public class CalculateFromUnityController extends Controller{
         super(scalimeterBoard);
     }
 
-    public String calculateFromUnity (float result){
-        return String.valueOf(this.scalimeterBoard.calculateFromUnity(result));
+    public String calculateFromUnity (float unity){
+        return String.valueOf(this.scalimeterBoard.calculateFromUnity(unity));
     }
 }
