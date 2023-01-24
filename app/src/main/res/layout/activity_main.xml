@@ -115,7 +115,7 @@
         app:layout_constraintVertical_bias="0.695" />
 
     <ImageView
-        android:id="@+id/unit_ruler"
+        android:id="@+id/object_scale_view"
         android:layout_width="201.324px"
         android:layout_height="201.324px"
         android:layout_gravity="end"

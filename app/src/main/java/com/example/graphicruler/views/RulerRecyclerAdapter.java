@@ -36,6 +36,10 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
         return 40;
     }
 
+    public void setScaledHeight() {
+
+    }
+
     static class RulerViewHolder extends RecyclerView.ViewHolder {
         TextView unitNumberView;
         ImageView unitRulerView;

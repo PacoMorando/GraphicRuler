@@ -9,16 +9,14 @@ import com.example.graphicruler.models.ScalimeterBoard;
 
 public class View {
     private final ActivityMainBinding activityMainViewBinding;
-    private final Context context;
     private final ScaleCalculatorView scaleCalculatorView;
     private final GraphicElementsView graphicElementsView;
 
     public View(ActivityMainBinding activityMainViewBinding, Context context) {
         this.activityMainViewBinding = activityMainViewBinding;
-        this.context = context;
         ScalimeterBoard scalimeterBoard = new ScalimeterBoard(this.getScaleFactor());
         this.scaleCalculatorView = new ScaleCalculatorView(scalimeterBoard, activityMainViewBinding);
-        this.graphicElementsView = new GraphicElementsView(scalimeterBoard, activityMainViewBinding);
+        this.graphicElementsView = new GraphicElementsView(scalimeterBoard, activityMainViewBinding, context);
     }
 
     private float getScaleFactor() {
@@ -26,7 +24,7 @@ public class View {
     }
 
     public void viewInit() {
-        this.graphicElementsView.graphicsInit(this.context);
+        //this.graphicElementsView.graphicsInit();
         this.activityMainViewBinding.unities.addTextChangedListener(this.scaleCalculatorView.getUnitiesWatcher());
         this.activityMainViewBinding.scaledUnities.addTextChangedListener(this.scaleCalculatorView.getScaledUnitiesWatcher());
     }
