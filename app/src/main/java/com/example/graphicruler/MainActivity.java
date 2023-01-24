@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -24,6 +25,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         this.view = new com.example.graphicruler.views.View(activityMainViewBinding, this);
         hideSystemUI();
         view.viewInit();
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        activityMainViewBinding.screenData.setText(metrics.toString() +
+                        "\n heightPixels: " + metrics.heightPixels +
+                        "\n widthPixels: " + metrics.widthPixels +
+                        "\n ydpi : " + metrics.ydpi +
+                        "\n ydpi/2.54 : " + metrics.ydpi / 2.54 +
+                        "\n densityDpi : " + metrics.densityDpi +
+                        "\n density : " + metrics.density
+        );
     }
 
     private void hideSystemUI() {
@@ -37,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
-    public void showScaleMenu(View view) {
+    public void showScaleMenu(View view) {//Este metodo no estoy seguro que le corresponda estar aqui, probar con databiding pasarlo la clase View
         PopupMenu scalePopupMenu = new PopupMenu(this, view);
         scalePopupMenu.setOnMenuItemClickListener(this);
         scalePopupMenu.inflate(R.menu.scale_menu);

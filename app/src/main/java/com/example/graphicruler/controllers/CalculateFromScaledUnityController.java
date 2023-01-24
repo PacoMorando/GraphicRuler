@@ -2,9 +2,8 @@ package com.example.graphicruler.controllers;
 
 import com.example.graphicruler.models.ScalimeterBoard;
 
-public class CalculateFromResultController extends Controller{
-//CAMBIAR NOMBRE A LA CLASE, NO DEBERIA DE SER "FROM RESULT"
-    public CalculateFromResultController(ScalimeterBoard scalimeterBoard) {
+public class CalculateFromScaledUnityController extends Controller{
+    public CalculateFromScaledUnityController(ScalimeterBoard scalimeterBoard) {
         super(scalimeterBoard);
     }
 
