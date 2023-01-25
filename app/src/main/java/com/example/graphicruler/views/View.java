@@ -24,7 +24,7 @@ public class View {
     }
 
     public void viewInit() {
-        //this.graphicElementsView.graphicsInit();
+        //Este metodo puede estar en el constructor de la scaleCalculatorView
         this.activityMainViewBinding.unities.addTextChangedListener(this.scaleCalculatorView.getUnitiesWatcher());
         this.activityMainViewBinding.scaledUnities.addTextChangedListener(this.scaleCalculatorView.getScaledUnitiesWatcher());
     }
@@ -33,6 +33,6 @@ public class View {
         int scale = Integer.parseInt((String) menuItem.getTitle());
         this.activityMainViewBinding.scaleFactor.setText(menuItem.getTitle());
         this.scaleCalculatorView.setScale(scale);
-        this.graphicElementsView.setScale();
+        this.graphicElementsView.setScale(scale);
     }
 }

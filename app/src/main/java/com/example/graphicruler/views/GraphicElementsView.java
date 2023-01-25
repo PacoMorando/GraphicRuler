@@ -1,7 +1,6 @@
 package com.example.graphicruler.views;
 
 import android.content.Context;
-import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,13 +12,11 @@ import com.example.graphicruler.models.ScalimeterBoard;
 public class GraphicElementsView {
 
     private final ActivityMainBinding activityMainViewBinding;
-    //private final RecyclerView rulerRecyclerView;
-    //private final RecyclerView graphicScaleRecyclerView;
-    //private ImageView objectScaleView;
     private final RulerRecyclerAdapter rulerRecyclerAdapter;
     private final GraphicScaleRecyclerAdapter graphicScaleRecyclerAdapter;
     private ConfigScaleController configScaleController;
     private final Context context;
+    //EL CONTEXT TIENE QUE SER UN SINGLETON!!!!!!!!!!!!!!!
 
     public GraphicElementsView(ScalimeterBoard scalimeterBoard, ActivityMainBinding activityMainViewBinding, Context context) {
         this.activityMainViewBinding = activityMainViewBinding;
@@ -30,7 +27,7 @@ public class GraphicElementsView {
         this.configScaleController = new ConfigScaleController(scalimeterBoard);
     }
 
-    public void graphicsInit(){
+    private void graphicsInit(){
         graphicRuler(this.activityMainViewBinding.rulerRecyclerView,this.rulerRecyclerAdapter);
         graphicRuler(this.activityMainViewBinding.graphicScaleRecyclerView,this.graphicScaleRecyclerAdapter);
     }
@@ -53,7 +50,11 @@ public class GraphicElementsView {
         return rulerLinearLayoutManager;
     }
 
-    public void setScale() {
-        this.rulerRecyclerAdapter.setScaledHeight();//A desarrollar
+    public void setScale(int scale) {
+        this.rulerRecyclerAdapter.setScaledHeight(scale);//Este metodo debe reiniciar el adapter con nuevos datos
+    }
+
+    private float getDeviceHeightDensity() {
+        return this.context.getResources().getDisplayMetrics().ydpi;
     }
 }

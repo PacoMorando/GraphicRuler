@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graphicruler.R;
 
-public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder>{
+public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder> {
     private final Context context;
+    private float unitRulerHeight;
 
     public RulerRecyclerAdapter(Context context) {
         this.context = context;
@@ -29,6 +30,7 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull RulerViewHolder holder, int position) {
         holder.unitNumberView.setText(String.valueOf(position));
+        holder.unitRulerView.setLayoutParams();
     }
 
     @Override
@@ -36,8 +38,8 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
         return 40;
     }
 
-    public void setScaledHeight() {
-
+    public void setScaledHeight(int scale) {
+        this.unitRulerHeight = (float) (this.context.getResources().getDisplayMetrics().ydpi / 2.54);
     }
 
     static class RulerViewHolder extends RecyclerView.ViewHolder {
