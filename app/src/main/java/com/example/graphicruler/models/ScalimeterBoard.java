@@ -33,6 +33,6 @@ public class ScalimeterBoard {
     }
 
     public int getUnitHeight(float deviceHeight) {
-        return 0;
+        return this.scaleCalculator.getUnitHeight(deviceHeight);
     }
 }

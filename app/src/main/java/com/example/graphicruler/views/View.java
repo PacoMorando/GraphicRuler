@@ -33,6 +33,6 @@ public class View {
         int scale = Integer.parseInt((String) menuItem.getTitle());
         this.activityMainViewBinding.scaleFactor.setText(menuItem.getTitle());
         this.scaleCalculatorView.setScale(scale);
-        this.graphicElementsView.setScale(scale);
+        this.graphicElementsView.setScale();
     }
 }

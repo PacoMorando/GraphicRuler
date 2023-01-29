@@ -14,7 +14,7 @@ public class GraphicElementsView {
     private final ActivityMainBinding activityMainViewBinding;
     private final RulerRecyclerAdapter rulerRecyclerAdapter;
     private final GraphicScaleRecyclerAdapter graphicScaleRecyclerAdapter;
-    private ConfigScaleController configScaleController;
+    private final ConfigScaleController configScaleController;
     private final Context context;
     //EL CONTEXT TIENE QUE SER UN SINGLETON!!!!!!!!!!!!!!!
 
@@ -25,7 +25,7 @@ public class GraphicElementsView {
         this.context = context;
         this.configScaleController = new ConfigScaleController(scalimeterBoard);
         this.graphicsInit();
-        this.setScale(this.getUnitHeight());
+        this.setScale();
     }
 
     private void graphicsInit(){
@@ -51,15 +51,13 @@ public class GraphicElementsView {
         return rulerLinearLayoutManager;
     }
 
-    public void setScale(int scale) {
-        this.rulerRecyclerAdapter.setScaledHeight(scale);//Este metodo debe reiniciar el adapter con nuevos datos
-        //this.rulerRecyclerAdapter.setScaledHeight(this.getUnitHeight());//Este metodo debe reiniciar el adapter con nuevos datos
+    public void setScale() {
+        this.rulerRecyclerAdapter.setScaledHeight(this.getUnitHeight());//este es el que tengo que pasar como parametro para no tener que crear un nuevo ConfigScaleController
         this.rulerRecyclerAdapter.notifyDataSetChanged();
         this.activityMainViewBinding.rulerRecyclerView.scrollToPosition(0);
     }
 
     private int getUnitHeight() {
-        return this.configScaleController.getUnitHeight(this.context.getResources().getDisplayMetrics().ydpi);//el 2.54 me lo pasa el modelo
-        //return Math.toIntExact(Math.round(this.context.getResources().getDisplayMetrics().ydpi / 2.54));//el 2.54 me lo pasa el modelo
+        return this.configScaleController.getUnitHeight(this.context.getResources().getDisplayMetrics().ydpi);
     }
 }
