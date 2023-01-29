@@ -1,6 +1,7 @@
 package com.example.graphicruler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         hideSystemUI();
         view.viewInit();
 
+
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         activityMainViewBinding.screenData.setText(metrics.toString() +
                         "\n heightPixels: " + metrics.heightPixels +
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         "\n ydpi : " + metrics.ydpi +
                         "\n ydpi/2.54 : " + metrics.ydpi / 2.54 +
                         "\n densityDpi : " + metrics.densityDpi +
+                        "\n ALT MATCHPARENT : " + activityMainViewBinding.mainScreen.getLayoutParams().height +
                         "\n density : " + metrics.density
         );
     }

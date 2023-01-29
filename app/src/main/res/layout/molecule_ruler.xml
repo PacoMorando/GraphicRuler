@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/unit_ruler"
-        android:layout_height="105.960px"
-        android:layout_width="63.576px"
+        android:layout_height="match_parent"
+        android:layout_width="30px"
         android:layout_gravity="end"
         android:src="@drawable/centimeter" />
 

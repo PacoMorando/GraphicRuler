@@ -31,4 +31,8 @@ public class ScalimeterBoard {
     public void getMeasure(float result) {
 
     }
+
+    public int getUnitHeight(float deviceHeight) {
+        return 0;
+    }
 }

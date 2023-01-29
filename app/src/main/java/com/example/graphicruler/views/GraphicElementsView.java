@@ -23,8 +23,9 @@ public class GraphicElementsView {
         this.rulerRecyclerAdapter = new RulerRecyclerAdapter(context);
         this.graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter(context);
         this.context = context;
-        this.graphicsInit();
         this.configScaleController = new ConfigScaleController(scalimeterBoard);
+        this.graphicsInit();
+        this.setScale(this.getUnitHeight());
     }
 
     private void graphicsInit(){
@@ -35,7 +36,7 @@ public class GraphicElementsView {
     private void graphicRuler(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
         recyclerView.setLayoutManager(this.setManagerForRulers());
         recyclerView.setAdapter(adapter);
-        recyclerView.scrollToPosition(0);
+        recyclerView.scrollToPosition(0);//tal vez este se borra
     }
 
     private LinearLayoutManager setManagerForRulers() {
@@ -52,9 +53,13 @@ public class GraphicElementsView {
 
     public void setScale(int scale) {
         this.rulerRecyclerAdapter.setScaledHeight(scale);//Este metodo debe reiniciar el adapter con nuevos datos
+        //this.rulerRecyclerAdapter.setScaledHeight(this.getUnitHeight());//Este metodo debe reiniciar el adapter con nuevos datos
+        this.rulerRecyclerAdapter.notifyDataSetChanged();
+        this.activityMainViewBinding.rulerRecyclerView.scrollToPosition(0);
     }
 
-    private float getDeviceHeightDensity() {
-        return this.context.getResources().getDisplayMetrics().ydpi;
+    private int getUnitHeight() {
+        return this.configScaleController.getUnitHeight(this.context.getResources().getDisplayMetrics().ydpi);//el 2.54 me lo pasa el modelo
+        //return Math.toIntExact(Math.round(this.context.getResources().getDisplayMetrics().ydpi / 2.54));//el 2.54 me lo pasa el modelo
     }
 }

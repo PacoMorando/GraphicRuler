@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,7 @@ import com.example.graphicruler.R;
 
 public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder> {
     private final Context context;
-    private float unitRulerHeight;
+    private int unitRulerHeight = 106; //este no debe de ir incialiczado, el valor se debe pasar al iniciar la app
 
     public RulerRecyclerAdapter(Context context) {
         this.context = context;
@@ -30,16 +31,26 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull RulerViewHolder holder, int position) {
         holder.unitNumberView.setText(String.valueOf(position));
-        holder.unitRulerView.setLayoutParams();
+        this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
     }
+
+    private void setUnitRulerViewScreenDimensions(ImageView unitRulerView) {
+        unitRulerView.setLayoutParams(new LinearLayout.LayoutParams(this.unitRulerWidth(), this.unitRulerHeight));
+        // un metodo para el height y falta un metodo para el width
+    }
+
+    private int unitRulerWidth() {
+        return Math.toIntExact(Math.round(this.unitRulerHeight * 0.6));
+    }
+
 
     @Override
     public int getItemCount() {
         return 40;
     }
 
-    public void setScaledHeight(int scale) {
-        this.unitRulerHeight = (float) (this.context.getResources().getDisplayMetrics().ydpi / 2.54);
+    public void setScaledHeight(int unitRulerHeight) {
+        this.unitRulerHeight = unitRulerHeight;
     }
 
     static class RulerViewHolder extends RecyclerView.ViewHolder {

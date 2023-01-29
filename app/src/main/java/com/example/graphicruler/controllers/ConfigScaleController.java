@@ -10,4 +10,8 @@ public class ConfigScaleController extends Controller {
     public void setScale(float scale) {
         this.scalimeterBoard.setScale(scale);
     }
+
+    public int getUnitHeight(float deviceHeight) {
+        return this.scalimeterBoard.getUnitHeight(deviceHeight);
+    }
 }
