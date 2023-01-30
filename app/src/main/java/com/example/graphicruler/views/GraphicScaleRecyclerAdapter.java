@@ -18,8 +18,8 @@ import com.example.graphicruler.R;
 public class GraphicScaleRecyclerAdapter extends RecyclerView.Adapter<GraphicScaleRecyclerAdapter.GraphicScaleViewHolder> {
     private final Context context;
 
-    public GraphicScaleRecyclerAdapter(Context context) {
-        this.context = context;
+    public GraphicScaleRecyclerAdapter() {
+        this.context = com.example.graphicruler.views.Context.getInstance();
     }
 
     @NonNull

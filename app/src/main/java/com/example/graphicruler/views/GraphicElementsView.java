@@ -1,7 +1,5 @@
 package com.example.graphicruler.views;
 
-import android.content.Context;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,14 +13,11 @@ public class GraphicElementsView {
     private final RulerRecyclerAdapter rulerRecyclerAdapter;
     private final GraphicScaleRecyclerAdapter graphicScaleRecyclerAdapter;
     private final ConfigScaleController configScaleController;
-    private final Context context;
-    //EL CONTEXT TIENE QUE SER UN SINGLETON!!!!!!!!!!!!!!!
 
-    public GraphicElementsView(ScalimeterBoard scalimeterBoard, ActivityMainBinding activityMainViewBinding, Context context) {
+    public GraphicElementsView(ScalimeterBoard scalimeterBoard, ActivityMainBinding activityMainViewBinding) {
         this.activityMainViewBinding = activityMainViewBinding;
-        this.rulerRecyclerAdapter = new RulerRecyclerAdapter(context);
-        this.graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter(context);
-        this.context = context;
+        this.rulerRecyclerAdapter = new RulerRecyclerAdapter();
+        this.graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter();
         this.configScaleController = new ConfigScaleController(scalimeterBoard);
         this.graphicsInit();
         this.setScale();
@@ -40,7 +35,7 @@ public class GraphicElementsView {
     }
 
     private LinearLayoutManager setManagerForRulers() {
-        LinearLayoutManager rulerLinearLayoutManager = new LinearLayoutManager(this.context) {
+        LinearLayoutManager rulerLinearLayoutManager = new LinearLayoutManager(Context.getInstance()) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -58,6 +53,6 @@ public class GraphicElementsView {
     }
 
     private int getUnitHeight() {
-        return this.configScaleController.getUnitHeight(this.context.getResources().getDisplayMetrics().ydpi);
+        return this.configScaleController.getUnitHeight(Context.getInstance().getResources().getDisplayMetrics().ydpi);//Aqui hay un metodo para el singleton
     }
 }

@@ -13,10 +13,11 @@ public class View {
     private final GraphicElementsView graphicElementsView;
 
     public View(ActivityMainBinding activityMainViewBinding, Context context) {
+        com.example.graphicruler.views.Context.init(context);
         this.activityMainViewBinding = activityMainViewBinding;
         ScalimeterBoard scalimeterBoard = new ScalimeterBoard(this.getScaleFactor());
         this.scaleCalculatorView = new ScaleCalculatorView(scalimeterBoard, activityMainViewBinding);
-        this.graphicElementsView = new GraphicElementsView(scalimeterBoard, activityMainViewBinding, context);
+        this.graphicElementsView = new GraphicElementsView(scalimeterBoard, activityMainViewBinding);
     }
 
     private float getScaleFactor() {

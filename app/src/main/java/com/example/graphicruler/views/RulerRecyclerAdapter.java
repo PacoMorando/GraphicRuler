@@ -15,10 +15,10 @@ import com.example.graphicruler.R;
 
 public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder> {
     private final Context context;
-    private int unitRulerHeight; //este no debe de ir incialiczado, el valor se debe pasar al iniciar la app
+    private int unitRulerHeight;
 
-    public RulerRecyclerAdapter(Context context) {
-        this.context = context;
+    public RulerRecyclerAdapter() {
+        this.context = com.example.graphicruler.views.Context.getInstance();
     }
 
     @NonNull
