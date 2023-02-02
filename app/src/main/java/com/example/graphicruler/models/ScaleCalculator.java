@@ -4,6 +4,7 @@ public class ScaleCalculator {
     private final float INCHES_TO_CENTIMETERS = 2.54f;
     private float scale;
     private float rulerUnity = 100.0f;
+    private int unitHeight;
 
     public ScaleCalculator (float scale){
         this.scale = scale;
@@ -25,7 +26,11 @@ public class ScaleCalculator {
         this.rulerUnity = rulerUnity;
     }
 
-    public int getUnitHeight(float deviceHeight) {
-        return Math.round((deviceHeight/this.INCHES_TO_CENTIMETERS) * (this.rulerUnity/this.scale));
+    public int getUnitHeight() {//estos metodos deberian ser accesibles solo por paquete?
+        return Math.round(this.unitHeight * (this.rulerUnity/this.scale));
+    }
+
+    public void setUnitHeight(float deviceHeight) {
+        this.unitHeight = Math.round((deviceHeight/this.INCHES_TO_CENTIMETERS));
     }
 }

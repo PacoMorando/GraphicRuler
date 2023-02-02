@@ -10,4 +10,7 @@ class Context {
      static android.content.Context getInstance(){
         return Context.context;
     }
+    static float getDeviceHeight() {
+        return Context.getInstance().getResources().getDisplayMetrics().ydpi;
+    }
 }

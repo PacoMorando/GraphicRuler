@@ -32,7 +32,15 @@ public class ScalimeterBoard {
 
     }
 
-    public int getUnitHeight(float deviceHeight) {
-        return this.scaleCalculator.getUnitHeight(deviceHeight);
+    public int getUnitHeight() {
+        return this.scaleCalculator.getUnitHeight();
+    }
+
+    public int getObjectScaleHeight() {
+        return Math.round(this.getUnitHeight() * 2);//TODO RESOLVER ESTE NUMERO NAGICO... TAL VEZ LO OBJETOS DEBERIAN DE SER ENUMERADOS???
+    }
+
+    public void setUnitHeight(float deviceHeight) {
+        this.scaleCalculator.setUnitHeight(deviceHeight);
     }
 }

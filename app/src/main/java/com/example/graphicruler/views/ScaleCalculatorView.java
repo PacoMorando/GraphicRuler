@@ -13,21 +13,17 @@ import com.example.graphicruler.models.ScalimeterBoard;
 public class ScaleCalculatorView {
     private final CalculateFromUnityController calculateFromUnityController;
     private final CalculateFromScaledUnityController calculateFromScaledUnityController;
-    private final ConfigScaleController configScaleController;//este a lo mejor no va aqui
     private final EditText unities;
     private final EditText scaledUnities;
 
     public ScaleCalculatorView(ScalimeterBoard scalimeterBoard, ActivityMainBinding activityMainViewBinding) {
         this.calculateFromUnityController = new CalculateFromUnityController(scalimeterBoard);
         this.calculateFromScaledUnityController = new CalculateFromScaledUnityController(scalimeterBoard);
-        this.configScaleController = new ConfigScaleController(scalimeterBoard);
         this.unities = activityMainViewBinding.unities;
         this.scaledUnities = activityMainViewBinding.scaledUnities;
     }
 
-
-    public void setScale(int scale) {
-        configScaleController.setScale(scale);
+    public void setScale() {
         this.setScaledUnitiesResult();
         this.setUnitiesResult();
     }
