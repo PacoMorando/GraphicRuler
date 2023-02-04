@@ -24,18 +24,20 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     @NonNull
     @Override
     public RulerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.molecule_ruler, parent, false);
-        return new RulerViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.molecule_ruler_test, parent, false);
+        return new RulerViewHolder(view);//RulerViewHolder(this.moleculeForCurrentScaleView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RulerViewHolder holder, int position) {
         holder.unitNumberView.setText(String.valueOf(position));
         this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
+        //holder.unitRulerView.getLayoutParams().height = 200;
     }
 
-    private void setUnitRulerViewScreenDimensions(ImageView unitRulerView) {
-        unitRulerView.setLayoutParams(new LinearLayout.LayoutParams(this.unitRulerWidth(), this.unitRulerHeight));
+    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {//este parametro era un ImageView
+        //unitRulerView.setLayoutParams(new LinearLayout.LayoutParams(this.unitRulerWidth(), this.unitRulerHeight));
+        unitRulerView.getLayoutParams().height = this.unitRulerHeight;
         // un metodo para el height y falta un metodo para el width
     }
 
@@ -55,12 +57,15 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
 
     static class RulerViewHolder extends RecyclerView.ViewHolder {
         TextView unitNumberView;
-        ImageView unitRulerView;
+        //ImageView unitRulerView;
+        LinearLayout unitRulerView;
 
         public RulerViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.unitNumberView = itemView.findViewById(R.id.unit_number);
-            this.unitRulerView = itemView.findViewById(R.id.unit_ruler);
+            // this.unitNumberView = itemView.findViewById(R.id.unit_number);
+            this.unitNumberView = itemView.findViewById(R.id.unit_number_test);
+            //this.unitRulerView = itemView.findViewById(R.id.unit_ruler);
+            this.unitRulerView = itemView.findViewById(R.id.unit_ruler_test);
         }
     }
 }
