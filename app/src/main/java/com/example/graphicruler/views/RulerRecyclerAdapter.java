@@ -24,7 +24,7 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     @NonNull
     @Override
     public RulerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.molecule_ruler_test, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.molecule_ruler_test, parent, false);//Este es el fatoryMetod
         return new RulerViewHolder(view);//RulerViewHolder(this.moleculeForCurrentScaleView);
     }
 
@@ -32,19 +32,11 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     public void onBindViewHolder(@NonNull RulerViewHolder holder, int position) {
         holder.unitNumberView.setText(String.valueOf(position));
         this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
-        //holder.unitRulerView.getLayoutParams().height = 200;
     }
 
-    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {//este parametro era un ImageView
-        //unitRulerView.setLayoutParams(new LinearLayout.LayoutParams(this.unitRulerWidth(), this.unitRulerHeight));
+    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {//este parametro era un ImageView?
         unitRulerView.getLayoutParams().height = this.unitRulerHeight;
-        // un metodo para el height y falta un metodo para el width
     }
-
-    private int unitRulerWidth() {
-        return Math.toIntExact(Math.round(this.unitRulerHeight * 0.6));
-    }
-
 
     @Override
     public int getItemCount() {
