@@ -33,4 +33,8 @@ public class ScaleCalculator {
     public void setUnitHeight(float deviceHeight) {
         this.unitHeight = Math.round((deviceHeight/this.INCHES_TO_CENTIMETERS));
     }
+
+    public float getScale() {
+        return scale;
+    }
 }

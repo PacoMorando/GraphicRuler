@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
-        this.view.setScale(menuItem);
+        this.view.setScale(Float.parseFloat(String.valueOf(menuItem)));
         return false;
     }
 

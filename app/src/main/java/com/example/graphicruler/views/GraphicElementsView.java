@@ -1,9 +1,6 @@
 package com.example.graphicruler.views;
 
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,12 +19,12 @@ public class GraphicElementsView {
         this.rulerRecyclerAdapter = new RulerRecyclerAdapter();
         this.graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter();
         this.configScaleController = configScaleController;
-        this.graphicsInit();
+        //this.graphicsInit();//este metodo lo lanzo desde fuera
     }
 
-    private void graphicsInit() {
+    public void graphicsInit(RulerSetter rulerSetter) {
         this.configScaleController.setUnitHeight(Context.getDeviceHeight());
-        this.setScale();
+        this.setScale(rulerSetter);// a menos de que lance este metodo despues de crearlo
         graphicRuler(this.activityMainViewBinding.rulerRecyclerView, this.rulerRecyclerAdapter);
         graphicRuler(this.activityMainViewBinding.graphicScaleRecyclerView, this.graphicScaleRecyclerAdapter);
     }
@@ -50,13 +47,20 @@ public class GraphicElementsView {
         return rulerLinearLayoutManager;
     }
 
-    public void setScale() {
+    public void setScale(RulerSetter rulerSetter) {
         this.setObjectScaleHeight(this.getObjectScaleHeight());
-        this.rulerRecyclerAdapter.setScaledHeight(this.getUnitHeight());
-        this.rulerRecyclerAdapter.notifyDataSetChanged();
+        this.rulerRecyclerAdapter.setRuler(rulerSetter);
+        this.rulerRecyclerAdapter.notifyDataSetChanged();//quiza este metodo va dentro del adater
         this.activityMainViewBinding.rulerRecyclerView.scrollToPosition(0);
-        //Me fatla setear la graphic scale y me falta setear el objectScale
+        //this.graphicScaleRecyclerAdapter.setRuler(rulerSetter); FALTA ESTE METODO
     }
+    /*public void setScale() { //ESTE METODO SE DEBE ELIMINAR TRAS ARREGLAR LA LINEA 27
+        this.setObjectScaleHeight(this.getObjectScaleHeight());
+        this.rulerRecyclerAdapter.setRuler(this.getUnitHeight());//Este metodo deberan ser setRuler(rulerSetter);
+        this.rulerRecyclerAdapter.notifyDataSetChanged();//quiza este metodo va dentro del adater
+        this.activityMainViewBinding.rulerRecyclerView.scrollToPosition(0);
+        //this.graphicScaleRecyclerAdapter.setRuler(rulerSetter); FALTA ESTE METODO
+    }*/
 
     private void setObjectScaleHeight(int objectScaleHeight) {
         this.activityMainViewBinding.objectScaleView.getLayoutParams().height = objectScaleHeight;

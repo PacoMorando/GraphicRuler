@@ -43,4 +43,8 @@ public class ScalimeterBoard {
     public void setUnitHeight(float deviceHeight) {
         this.scaleCalculator.setUnitHeight(deviceHeight);
     }
+
+    public float getScale() {
+        return this.scaleCalculator.getScale();
+    }
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,7 +14,8 @@ import com.example.graphicruler.R;
 
 public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder> {
     private final Context context;
-    private int unitRulerHeight;
+   // private int unitRulerHeight;
+    private RulerSetter rulerSetter;
 
     public RulerRecyclerAdapter() {
         this.context = com.example.graphicruler.views.Context.getInstance();
@@ -24,40 +24,42 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     @NonNull
     @Override
     public RulerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.molecule_ruler_test, parent, false);//Este es el fatoryMetod
-        return new RulerViewHolder(view);//RulerViewHolder(this.moleculeForCurrentScaleView);
+        View view = LayoutInflater.from(context).inflate(rulerSetter.getView(), parent, false);
+        return new RulerViewHolder(view,this.rulerSetter);//RulerViewHolder(this.moleculeForCurrentScaleView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RulerViewHolder holder, int position) {
-        holder.unitNumberView.setText(String.valueOf(position));
+        //holder.unitNumberView.setText(String.valueOf(position));
+        holder.unitNumberView.setText(this.rulerSetter.getPositionValue(position));
+        //this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
         this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
     }
 
-    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {//este parametro era un ImageView?
-        unitRulerView.getLayoutParams().height = this.unitRulerHeight;
+    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {//este es un metodo del rulerSetter???
+        unitRulerView.getLayoutParams().height = this.rulerSetter.getUnitRulerHeight();
     }
 
     @Override
     public int getItemCount() {
-        return 40;
+        return this.rulerSetter.getItemCount();//falta desarrollar este metodo
     }
 
-    public void setScaledHeight(int unitRulerHeight) {
-        this.unitRulerHeight = unitRulerHeight;
+    public void setRuler(RulerSetter rulerSetter) {
+        this.rulerSetter = rulerSetter;
     }
+   /* public void setRuler(int unitRulerHeight) {// ESTE METODO SE DEBE BORRAR UNA VEZ ARREGLADA LA LINEA 27 DE GraphElmViw
+        this.unitRulerHeight = unitRulerHeight;
+    }*/
 
     static class RulerViewHolder extends RecyclerView.ViewHolder {
         TextView unitNumberView;
-        //ImageView unitRulerView;
         LinearLayout unitRulerView;
 
-        public RulerViewHolder(@NonNull View itemView) {
+        public RulerViewHolder(@NonNull View itemView, RulerSetter rulerSetter) {
             super(itemView);
-            // this.unitNumberView = itemView.findViewById(R.id.unit_number);
-            this.unitNumberView = itemView.findViewById(R.id.unit_number_test);
-            //this.unitRulerView = itemView.findViewById(R.id.unit_ruler);
-            this.unitRulerView = itemView.findViewById(R.id.unit_ruler_test);
+            this.unitNumberView = itemView.findViewById(rulerSetter.getUnitNumberView());
+            this.unitRulerView = itemView.findViewById(rulerSetter.getUnitRulerView());
         }
     }
 }

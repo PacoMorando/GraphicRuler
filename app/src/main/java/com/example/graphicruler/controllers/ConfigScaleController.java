@@ -22,4 +22,12 @@ public class ConfigScaleController extends Controller {
     public void setUnitHeight(float deviceHeight) {
         this.scalimeterBoard.setUnitHeight(deviceHeight);
     }
+
+    public int getItemCount() {
+        return 40;//FALTA DESARROLLAR
+    }
+
+    public float getScale() {
+        return this.scalimeterBoard.getScale();
+    }
 }

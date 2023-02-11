@@ -13,6 +13,7 @@ public class View {
     private final ScaleCalculatorView scaleCalculatorView;
     private final GraphicElementsView graphicElementsView;
     private final ConfigScaleController configScaleController;
+    private final ScaleMenu scaleMenu;
 
 
     public View(ActivityMainBinding activityMainViewBinding, Context context) {
@@ -22,6 +23,8 @@ public class View {
         this.configScaleController = new ConfigScaleController(scalimeterBoard);
         this.scaleCalculatorView = new ScaleCalculatorView(scalimeterBoard, activityMainViewBinding);
         this.graphicElementsView = new GraphicElementsView(this.configScaleController, activityMainViewBinding);
+        this.scaleMenu = new ScaleMenu(this.configScaleController.getScale(),this.configScaleController);
+        this.graphicElementsView.graphicsInit(this.scaleMenu.getRulerSetter(this.configScaleController.getScale()));
     }
 
     private float getScaleFactor() {
@@ -34,11 +37,11 @@ public class View {
         this.activityMainViewBinding.scaledUnities.addTextChangedListener(this.scaleCalculatorView.getScaledUnitiesWatcher());
     }
 
-    public void setScale(MenuItem menuItem) {
-        int scale = Integer.parseInt((String) menuItem.getTitle());
-        this.configScaleController.setScale(scale);
-        this.activityMainViewBinding.scaleFactor.setText(menuItem.getTitle());
+    public void setScale(float scale) {
+        this.configScaleController.setScale(scale);//este metodo no va aqui va en el GraphicElementsView
+       // ScaleMenu scaleMenu = new ScaleMenu(scale, this.configScaleController );//Este objeto tiene que tener la altura segun la unitRulerHeight
+        this.activityMainViewBinding.scaleFactor.setText(String.valueOf(scale));
         this.scaleCalculatorView.setScale();
-        this.graphicElementsView.setScale();
+        this.graphicElementsView.setScale(this.scaleMenu.getRulerSetter(scale));
     }
 }
