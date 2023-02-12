@@ -8,15 +8,15 @@ public class ScalimeterBoard {
     private final ScaleCalculator scaleCalculator;
     private MeasureBars measureBars;
 
-    public ScalimeterBoard(float scale){
+    public ScalimeterBoard(float scale) {
         this.scaleCalculator = new ScaleCalculator(scale);
     }
 
-    public void setScale(float scale) {
+    public void setScale(float scale) {//PLANTEARME RECIBIR STRING
         this.scaleCalculator.setScale(scale);
     }
 
-    public void setRulerInCentimeters(){
+    public void setRulerInCentimeters() {
         this.scaleCalculator.setRulerUnity(100f);
     }
 
@@ -37,7 +37,7 @@ public class ScalimeterBoard {
     }
 
     public int getObjectScaleHeight() {
-        return Math.round(this.getUnitHeight() * 2);//TODO RESOLVER ESTE NUMERO NAGICO... TAL VEZ LO OBJETOS DEBERIAN DE SER ENUMERADOS???
+        return this.scaleCalculator.getObjectScaleHeight();
     }
 
     public void setUnitHeight(float deviceHeight) {
@@ -46,5 +46,13 @@ public class ScalimeterBoard {
 
     public float getScale() {
         return this.scaleCalculator.getScale();
+    }
+
+    public String getPositionValue(int position) {
+        return this.scaleCalculator.getPositionValue(position);
+    }
+
+    public int getRulerSize(int totalScreenHeightInInches) {
+        return this.scaleCalculator.getRulerSize(totalScreenHeightInInches);
     }
 }

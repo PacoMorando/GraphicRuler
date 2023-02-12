@@ -14,29 +14,27 @@ import com.example.graphicruler.R;
 
 public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder> {
     private final Context context;
-   // private int unitRulerHeight;
-    private RulerSetter rulerSetter;
+    private final RulerSetter rulerSetter;
 
-    public RulerRecyclerAdapter() {
+    public RulerRecyclerAdapter(RulerSetter rulerSetter) {
         this.context = com.example.graphicruler.views.Context.getInstance();
+        this.rulerSetter = rulerSetter;
     }
 
     @NonNull
     @Override
     public RulerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(rulerSetter.getView(), parent, false);
-        return new RulerViewHolder(view,this.rulerSetter);//RulerViewHolder(this.moleculeForCurrentScaleView);
+        return new RulerViewHolder(view,this.rulerSetter);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RulerViewHolder holder, int position) {
-        //holder.unitNumberView.setText(String.valueOf(position));
         holder.unitNumberView.setText(this.rulerSetter.getPositionValue(position));
-        //this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
         this.setUnitRulerViewScreenDimensions(holder.unitRulerView);
     }
 
-    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {//este es un metodo del rulerSetter???
+    private void setUnitRulerViewScreenDimensions(LinearLayout unitRulerView) {
         unitRulerView.getLayoutParams().height = this.rulerSetter.getUnitRulerHeight();
     }
 
@@ -44,13 +42,6 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
     public int getItemCount() {
         return this.rulerSetter.getItemCount();//falta desarrollar este metodo
     }
-
-    public void setRuler(RulerSetter rulerSetter) {
-        this.rulerSetter = rulerSetter;
-    }
-   /* public void setRuler(int unitRulerHeight) {// ESTE METODO SE DEBE BORRAR UNA VEZ ARREGLADA LA LINEA 27 DE GraphElmViw
-        this.unitRulerHeight = unitRulerHeight;
-    }*/
 
     static class RulerViewHolder extends RecyclerView.ViewHolder {
         TextView unitNumberView;

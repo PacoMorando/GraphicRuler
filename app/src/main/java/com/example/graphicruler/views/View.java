@@ -39,7 +39,6 @@ public class View {
 
     public void setScale(float scale) {
         this.configScaleController.setScale(scale);//este metodo no va aqui va en el GraphicElementsView
-       // ScaleMenu scaleMenu = new ScaleMenu(scale, this.configScaleController );//Este objeto tiene que tener la altura segun la unitRulerHeight
         this.activityMainViewBinding.scaleFactor.setText(String.valueOf(scale));
         this.scaleCalculatorView.setScale();
         this.graphicElementsView.setScale(this.scaleMenu.getRulerSetter(scale));

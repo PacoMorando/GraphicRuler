@@ -23,11 +23,15 @@ public class ConfigScaleController extends Controller {
         this.scalimeterBoard.setUnitHeight(deviceHeight);
     }
 
-    public int getItemCount() {
-        return 40;//FALTA DESARROLLAR
+    public int getItemCount(int totalScreenHeightInInches) {
+        return this.scalimeterBoard.getRulerSize(totalScreenHeightInInches);
     }
 
     public float getScale() {
         return this.scalimeterBoard.getScale();
+    }
+
+    public String getPositionValue(int position) {
+        return this.scalimeterBoard.getPositionValue(position);
     }
 }

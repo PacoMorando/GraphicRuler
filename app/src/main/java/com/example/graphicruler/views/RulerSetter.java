@@ -1,7 +1,5 @@
 package com.example.graphicruler.views;
 
-import android.view.View;
-
 import com.example.graphicruler.controllers.ConfigScaleController;
 
 public abstract class RulerSetter {
@@ -13,14 +11,16 @@ public abstract class RulerSetter {
     }
     public abstract int getView();
 
-    public abstract String getPositionValue(int position);
+    public  String getPositionValue(int position){
+        return this.configScaleController.getPositionValue(position);
+    }
 
     public int getUnitRulerHeight() {
         return this.configScaleController.getUnitHeight();
     }
 
     public int getItemCount() {
-        return this.configScaleController.getItemCount();
+        return this.configScaleController.getItemCount(Context.getTotalScreenHeightInInches());
     }
 
     public abstract int getUnitNumberView();

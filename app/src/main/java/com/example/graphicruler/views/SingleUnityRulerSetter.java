@@ -14,10 +14,10 @@ public class SingleUnityRulerSetter extends RulerSetter {
         return R.layout.molecule_single_unity_ruler;
     }
 
-    @Override
+    /*@Override
     public String getPositionValue(int position) {
-        return String.valueOf(position);
-    }
+        return String.valueOf(position);//este no deber de retornar position, debe retornar una operacion
+    }*/
 
     @Override
     public int getUnitNumberView() {

@@ -5,7 +5,6 @@
     <dimen name="fraction_unity_bar_width">23dp</dimen>
     <dimen name="fraction_half_unity_bar_width">18dp</dimen>
     <dimen name="unity_bar_height">2dp</dimen>
-    <dimen name="middle_unity_bar_height">1.5dp</dimen>
     <dimen name="fraction_unity_bar_height">1dp</dimen>
     <dimen name="numbers_size">20sp</dimen>
 </resources>
