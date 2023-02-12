@@ -16,11 +16,6 @@ public class ComposeUnityRulerSetter extends RulerSetter {
         return R.layout.molecule_compose_unity_ruler;
     }
 
-    /*@Override
-    public String getPositionValue(int position) {
-        return String.valueOf(position);//este no deber de retornar position, debe retornar una operacion A LO MEJOR ES UN METODO DEL PADRE
-    }*/
-
     @Override
     public int getUnitNumberView() {
         return R.id.compose_unit_number;

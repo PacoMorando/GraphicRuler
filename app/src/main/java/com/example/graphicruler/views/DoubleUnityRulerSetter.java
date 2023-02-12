@@ -14,11 +14,6 @@ public class DoubleUnityRulerSetter extends RulerSetter {
         return R.layout.molecule_double_unity_ruler;
     }
 
-   /* @Override
-    public String getPositionValue(int position) {
-        return String.valueOf(position);//este no deber de retornar position, debe retornar una operacion
-    }*/
-
     @Override
     public int getUnitNumberView() {
         return R.id.double_unit_number;

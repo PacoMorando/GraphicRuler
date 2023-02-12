@@ -13,9 +13,6 @@ public class ScaleCalculator {
     public void setScale(float scale) {
         this.scale = Scales.valueOf(this.getScaleName(scale));
     }
-    /*public void setScale(float scale) {
-        this.scale = scale;
-    }*/
 
     private String getScaleName(float scale) {
         return "ONE_TO_" + (int) scale;
@@ -33,9 +30,6 @@ public class ScaleCalculator {
         this.rulerUnity = rulerUnity;
     }
 
-    /*public int getUnitHeight() {//estos metodos deberian ser accesibles solo por paquete?
-        return Math.round(this.unitHeight * (this.rulerUnity/this.scale));
-    }*/
     public int getUnitHeight() {
         return Math.round(this.unitHeight * (this.rulerUnity / this.scale.getHeight())); // QUE LA OPERACION SE HAGA AQUI Y NO EN EL ENUMERADO
     }
@@ -48,9 +42,6 @@ public class ScaleCalculator {
         this.unitHeight = Math.round((deviceHeight / this.INCHES_TO_CENTIMETERS));
     }
 
-    /*public float getScale() {
-        return scale;
-    }*/
     public float getScale() {
         return scale.getScale();
     }
@@ -65,10 +56,7 @@ public class ScaleCalculator {
     }
 
     public int getRulerSize(int totalScreenHeightInInches) {
-        System.out.println("\n \n \n \n \n \n \n \n \n \n \n \n \n \n ::::::::::::::::::::::::::::::::::::::::::::" + (int) (this.calculateFromResult(this.totalScreenHeightInCentimeters(totalScreenHeightInInches)) / this.scale.getUnitHeightFactor()) );
         return (int) (this.calculateFromResult(this.totalScreenHeightInCentimeters(totalScreenHeightInInches)) / this.scale.getUnitHeightFactor());
-        //return (int) Math.ceil((totalScreenHeightInInches * this.INCHES_TO_CENTIMETERS * (this.scale.getScale() / this.rulerUnity)) / this.scale.getUnitHeightFactor());
-        //return result * scale.getScale() / rulerUnity (float) Math.ceil(totalScreenHeightInInches * this.INCHES_TO_CENTIMETERS)
     }
 
     private float totalScreenHeightInCentimeters(int totalScreenHeightInInches) {
