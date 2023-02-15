@@ -55,4 +55,16 @@ public class ScalimeterBoard {
     public int getRulerSize(int totalScreenHeightInInches) {
         return this.scaleCalculator.getRulerSize(totalScreenHeightInInches);
     }
+
+    public String getGraphicRulerPositionValue(int position) {
+        return this.scaleCalculator.getGraphicRulerPositionValue(position);
+    }
+
+    public int getGraphicRulerItemCount() {
+        return this.scaleCalculator.getGraphicRulerItemCount();
+    }
+
+    public int getGraphicRulerUnitHeight(int position) {
+        return this.scaleCalculator.getGraphicRulerUnitHeight(position);
+    }
 }

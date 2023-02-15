@@ -13,13 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graphicruler.R;
 
-// LOS ADAPTERS SE PUEDEN REFACTORIZAR CON BUILDERS
 
 public class GraphicScaleRecyclerAdapter extends RecyclerView.Adapter<GraphicScaleRecyclerAdapter.GraphicScaleViewHolder> {
     private final Context context;
+    private final GraphicRulerSetter graphicRulerSetter;
 
-    public GraphicScaleRecyclerAdapter() {
+    public GraphicScaleRecyclerAdapter(GraphicRulerSetter rulerSetter) {
         this.context = com.example.graphicruler.views.Context.getInstance();
+        this.graphicRulerSetter = rulerSetter;
     }
 
     @NonNull
@@ -31,16 +32,16 @@ public class GraphicScaleRecyclerAdapter extends RecyclerView.Adapter<GraphicSca
 
     @Override
     public void onBindViewHolder(@NonNull GraphicScaleViewHolder holder, int position) {
-        holder.unitGraphicScaleNumberView.setText(String.valueOf(unitNumber(position)));
+        holder.unitGraphicScaleNumberView.setText(String.valueOf(this.graphicRulerSetter.getPositionValue(position)));
         setUnitScaleHeight(holder);
         setViewMargins(holder);
     }
 
-    private void setUnitScaleHeight(@NonNull GraphicScaleViewHolder holder) {
+   private void setUnitScaleHeight(@NonNull GraphicScaleViewHolder holder) {
         holder.unitGraphicScaleView.setLayoutParams(
                 new LinearLayout.LayoutParams(
                         holder.unitGraphicScaleView.getLayoutParams().width,
-                        holder.unitGraphicScaleView.getLayoutParams().height * unitHeight(holder.getAdapterPosition())));
+                        this.graphicRulerSetter.getUnitRulerHeight(holder.getAdapterPosition())));
     }
 
     private void setViewMargins(@NonNull GraphicScaleViewHolder holder) {
@@ -61,47 +62,9 @@ public class GraphicScaleRecyclerAdapter extends RecyclerView.Adapter<GraphicSca
         }
     }
 
-    private int unitHeight(int position) {
-        if (position > 1) {
-            if (position == 2) {
-                return 3;
-            }
-            if (position == 3) {
-                return 5;
-            }
-            if (position == 4) {
-                return 10;
-            }
-            if (position == 5) {
-                return 30;
-            }
-            if (position == 6) {
-                return 50;
-            }
-
-        }
-        return 1;
-    }
-
-    private int unitNumber(int position) {
-        if (position == 3) {
-            return 5;
-        }
-        if (position == 4) {
-            return 10;
-        }
-        if (position == 5) {
-            return 20;
-        }
-        if (position == 6) {
-            return 40;
-        }
-        return position;
-    }
-
     @Override
     public int getItemCount() {
-        return 30;
+        return 6;
     }
 
     public static class GraphicScaleViewHolder extends RecyclerView.ViewHolder {

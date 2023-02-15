@@ -1,7 +1,6 @@
 package com.example.graphicruler;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 
@@ -28,16 +27,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         view.viewInit();
 
 
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        activityMainViewBinding.screenData.setText(metrics.toString() +
-                        "\n heightPixels: " + metrics.heightPixels +
-                        "\n widthPixels: " + metrics.widthPixels +
-                        "\n ydpi : " + metrics.ydpi +
-                        "\n ydpi/2.54 : " + metrics.ydpi / 2.54 +
-                        "\n densityDpi : " + metrics.densityDpi +
-                        "\n ALT MATCHPARENT : " + activityMainViewBinding.mainScreen.getLayoutParams().height +
-                        "\n density : " + metrics.density
-        );
+        //displayMetricsInTextView(activityMainViewBinding);
+        activityMainViewBinding.screenData.setText("Graphic Ruler by:\nSaturn Apple Studios");
     }
 
     private void hideSystemUI() {
@@ -65,11 +56,26 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     //Este es para que se escondan las barras aunque se cambie de focus (que pase la aplicación a segundo plano)
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
             hideSystemUI();
         }
+    }
+
+    //BORRAR ESTE METODO AL FINAL
+    private void displayMetricsInTextView(ActivityMainBinding activityMainViewBinding) {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        activityMainViewBinding.screenData.setText(metrics.toString() +
+                "\n heightPixels: " + metrics.heightPixels +
+                "\n widthPixels: " + metrics.widthPixels +
+                "\n ydpi : " + metrics.ydpi +
+                "\n ydpi/2.54 : " + metrics.ydpi / 2.54 +
+                "\n densityDpi : " + metrics.densityDpi +
+                "\n ALT MATCHPARENT : " + activityMainViewBinding.mainScreen.getLayoutParams().height +
+                "\n density : " + metrics.density
+        );
     }
 }

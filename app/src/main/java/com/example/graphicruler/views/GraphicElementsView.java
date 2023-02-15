@@ -16,9 +16,8 @@ public class GraphicElementsView {
 
     public GraphicElementsView(ConfigScaleController configScaleController, ActivityMainBinding activityMainViewBinding) {
         this.activityMainViewBinding = activityMainViewBinding;
-       // this.rulerRecyclerAdapter = new RulerRecyclerAdapter();
-        this.graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter();
         this.configScaleController = configScaleController;
+        this.graphicScaleRecyclerAdapter = new GraphicScaleRecyclerAdapter(new GraphicRulerSetter(configScaleController));
     }
 
     public void graphicsInit(RulerSetter rulerSetter) {
@@ -52,7 +51,6 @@ public class GraphicElementsView {
 
     public void setScale(RulerSetter rulerSetter) {
         this.setObjectScaleHeight(this.getObjectScaleHeight());
-        //this.rulerRecyclerAdapter.notifyDataSetChanged();//NO LO VOY A BORRAR POR SI LA RENUMERACION DA PROBLEMAS
         this.setRulers(rulerSetter);
         //this.graphicScaleRecyclerAdapter.setRuler(rulerSetter); FALTA ESTE METODO QUE DEBERA DE ESTAR EN EL setRuler();
     }

@@ -4,7 +4,7 @@ import com.example.graphicruler.controllers.ConfigScaleController;
 
 public abstract class RulerSetter {
 
-    private final ConfigScaleController configScaleController;
+    protected final ConfigScaleController configScaleController;
 
     public RulerSetter(ConfigScaleController configScaleController){
         this.configScaleController = configScaleController;

@@ -1,6 +1,7 @@
 package com.example.graphicruler.models;
 
 public class ScaleCalculator {
+    private static final int TOTAL_GRAPHIC_SCALE_BARS = 6;
     private final float INCHES_TO_CENTIMETERS = 2.54f;
     private Scales scale;
     private float rulerUnity = 100.0f;
@@ -61,5 +62,50 @@ public class ScaleCalculator {
 
     private float totalScreenHeightInCentimeters(int totalScreenHeightInInches) {
         return (float) Math.ceil(totalScreenHeightInInches * this.INCHES_TO_CENTIMETERS);
+    }
+
+    public String getGraphicRulerPositionValue(int position) {
+        float floatPositionValue = this.graphicRulerUnitNumber(position) * this.scale.getUnitHeightFactor();
+        int integerPositionValue = (int) (this.graphicRulerUnitNumber(position) * this.scale.getUnitHeightFactor());
+        if (floatPositionValue == integerPositionValue) {
+            return String.valueOf(integerPositionValue);
+        }
+        return String.valueOf(floatPositionValue);
+    }
+
+    private int graphicRulerUnitNumber(int position) {
+        if (position == 3) {
+            return 5;
+        }
+        if (position == 4) {
+            return 10;
+        }
+        if (position == 5) {
+            return 20;
+        }
+        if (position == 6) {
+            return 40;
+        }
+        return position;
+    }
+
+    public int getGraphicRulerItemCount() {
+        return TOTAL_GRAPHIC_SCALE_BARS;
+    }
+
+    public int getGraphicRulerUnitHeight(int position) {
+        if (position == 2) {
+            return 3 * this.getUnitHeight();
+        }
+        if (position == 3) {
+            return 5 * this.getUnitHeight();
+        }
+        if (position == 4) {
+            return 10 * this.getUnitHeight();
+        }
+        if (position == 5) {
+            return 30 * this.getUnitHeight();
+        }
+        return this.getUnitHeight();
     }
 }

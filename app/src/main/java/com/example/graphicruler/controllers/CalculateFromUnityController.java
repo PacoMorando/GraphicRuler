@@ -2,21 +2,19 @@ package com.example.graphicruler.controllers;
 
 import com.example.graphicruler.models.ScalimeterBoard;
 
-import java.math.BigDecimal;
 
-public class CalculateFromUnityController extends Controller{
+public class CalculateFromUnityController extends Controller {
     public CalculateFromUnityController(ScalimeterBoard scalimeterBoard) {
         super(scalimeterBoard);
     }
 
-    public String calculateFromUnity (float unity){
+    public String calculateFromUnity(float unity) {
         return formattedNumber(this.scalimeterBoard.calculateFromUnity(unity));
-        //return String.valueOf(this.scalimeterBoard.calculateFromUnity(unity));
     }
 
     private String formattedNumber(float number) {
         String numberFormatted = String.format("%.3f", number);
-        if ((int)number == Float.parseFloat(numberFormatted)) {
+        if ((int) number == Float.parseFloat(numberFormatted)) {
             return String.valueOf((int) number);
         }
         return numberFormatted;

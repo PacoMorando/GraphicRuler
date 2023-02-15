@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.graphicruler.R;
-
 public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdapter.RulerViewHolder> {
     private final Context context;
     private final RulerSetter rulerSetter;
@@ -40,7 +38,7 @@ public class RulerRecyclerAdapter extends RecyclerView.Adapter<RulerRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return this.rulerSetter.getItemCount();//falta desarrollar este metodo
+        return this.rulerSetter.getItemCount();
     }
 
     static class RulerViewHolder extends RecyclerView.ViewHolder {
