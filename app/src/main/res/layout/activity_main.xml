@@ -117,11 +117,11 @@
 
     <ImageView
         android:id="@+id/object_scale_view"
-        android:layout_width="201.324px"
-        android:layout_height="201.324px"
+        android:layout_width="240px"
+        android:layout_height="800px"
         android:layout_gravity="end"
         android:layout_marginStart="50dp"
-        android:src="@drawable/human"
+        android:background="@drawable/human_object_scale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

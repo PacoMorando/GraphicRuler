@@ -52,12 +52,11 @@ public class GraphicElementsView {
     public void setScale(RulerSetter rulerSetter) {
         this.setObjectScaleHeight(this.getObjectScaleHeight());
         this.setRulers(rulerSetter);
-        //this.graphicScaleRecyclerAdapter.setRuler(rulerSetter); FALTA ESTE METODO QUE DEBERA DE ESTAR EN EL setRuler();
     }
 
     private void setObjectScaleHeight(int objectScaleHeight) {
         this.activityMainViewBinding.objectScaleView.getLayoutParams().height = objectScaleHeight;
-        this.activityMainViewBinding.objectScaleView.getLayoutParams().width = objectScaleHeight;
+        this.activityMainViewBinding.objectScaleView.getLayoutParams().width = (int) (objectScaleHeight * 0.333);
     }
 
     private int getObjectScaleHeight() {

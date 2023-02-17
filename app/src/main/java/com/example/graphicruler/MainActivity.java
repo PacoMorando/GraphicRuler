@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
         //displayMetricsInTextView(activityMainViewBinding);
-        activityMainViewBinding.screenData.setText("Graphic Ruler by:\nSaturn Apple Studios");
+        activityMainViewBinding.screenData.setText("by Saturn Apple Studios");
     }
 
     private void hideSystemUI() {
