@@ -12,7 +12,7 @@ public abstract class RulerSetter {
     public abstract int getView();
 
     public  String getPositionValue(int position){
-        return this.configScaleController.getPositionValue(position);
+        return this.configScaleController.getRulerPositionValue(position);
     }
 
     public int getUnitRulerHeight() {

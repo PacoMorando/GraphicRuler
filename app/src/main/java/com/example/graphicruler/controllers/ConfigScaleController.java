@@ -31,8 +31,8 @@ public class ConfigScaleController extends Controller {
         return this.scalimeterBoard.getScale();
     }
 
-    public String getPositionValue(int position) {
-        return this.scalimeterBoard.getPositionValue(position);
+    public String getRulerPositionValue(int position) {
+        return this.scalimeterBoard.getRulerPositionValue(position);
     }
 
     public String getGraphicRulerPositionValue(int position) {

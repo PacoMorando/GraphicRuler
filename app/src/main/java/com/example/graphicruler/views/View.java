@@ -1,9 +1,8 @@
 package com.example.graphicruler.views;
 
 import android.content.Context;
-import android.view.MenuItem;
 
-
+import com.example.graphicruler.R;
 import com.example.graphicruler.controllers.ConfigScaleController;
 import com.example.graphicruler.databinding.ActivityMainBinding;
 import com.example.graphicruler.models.ScalimeterBoard;
@@ -19,8 +18,8 @@ public class View {
     public View(ActivityMainBinding activityMainViewBinding, Context context) {
         com.example.graphicruler.views.Context.init(context);
         this.activityMainViewBinding = activityMainViewBinding;
-        ScalimeterBoard scalimeterBoard = new ScalimeterBoard(this.getScaleFactor());
-        this.configScaleController = new ConfigScaleController(scalimeterBoard);
+        ScalimeterBoard scalimeterBoard = new ScalimeterBoard(this.getScaleFactor());//EL MODELO SE INSTANCIA EN EL CONTROLADOR
+        this.configScaleController = new ConfigScaleController(scalimeterBoard);// EN CONTROLADOR NO RECIBE AL MODELO EL LO CREA
         this.scaleCalculatorView = new ScaleCalculatorView(scalimeterBoard, activityMainViewBinding);
         this.graphicElementsView = new GraphicElementsView(this.configScaleController, activityMainViewBinding);
         this.scaleMenu = new ScaleMenu(this.configScaleController.getScale(),this.configScaleController);
@@ -32,15 +31,16 @@ public class View {
     }
 
     public void viewInit() {
-        //Este metodo puede estar en el constructor de la scaleCalculatorView
+        //Este metodo puede estar en el constructor de la scaleCalculatorView//HACER ESTE CAMBIO
         this.activityMainViewBinding.unities.addTextChangedListener(this.scaleCalculatorView.getUnitiesWatcher());
         this.activityMainViewBinding.scaledUnities.addTextChangedListener(this.scaleCalculatorView.getScaledUnitiesWatcher());
     }
 
     public void setScale(float scale) {
-        this.configScaleController.setScale(scale);//este metodo no va aqui va en el GraphicElementsView
-        this.activityMainViewBinding.scaleFactor.setText(String.valueOf(scale));
+        this.configScaleController.setScale(scale);
+        this.activityMainViewBinding.scaleFactor.setText(String.format("%.0f",scale));//PLANTEARME UN SINGLETON TXTFORMATER
         this.scaleCalculatorView.setScale();
         this.graphicElementsView.setScale(this.scaleMenu.getRulerSetter(scale));
+        this.activityMainViewBinding.objectScaleView.setImageResource(R.drawable.object_scale_chair);
     }
 }

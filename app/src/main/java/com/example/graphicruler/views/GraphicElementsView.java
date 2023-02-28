@@ -50,11 +50,11 @@ public class GraphicElementsView {
     }
 
     public void setScale(RulerSetter rulerSetter) {
-        this.setObjectScaleHeight(this.getObjectScaleHeight());
+        this.setObjectScale(this.getObjectScaleHeight());
         this.setRulers(rulerSetter);
     }
 
-    private void setObjectScaleHeight(int objectScaleHeight) {
+    private void setObjectScale(int objectScaleHeight) {
         this.activityMainViewBinding.objectScaleView.getLayoutParams().height = objectScaleHeight;
         this.activityMainViewBinding.objectScaleView.getLayoutParams().width = (int) (objectScaleHeight * 0.333);
     }

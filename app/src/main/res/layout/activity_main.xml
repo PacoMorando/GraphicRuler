@@ -109,11 +109,13 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="GRAPHIC RULER"
+        android:fontFamily="@font/archivo_narrow_regular"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+        app:layout_constraintVertical_bias="0.977" />
 
     <ImageView
         android:id="@+id/object_scale_view"
@@ -121,7 +123,7 @@
         android:layout_height="800px"
         android:layout_gravity="end"
         android:layout_marginStart="50dp"
-        android:background="@drawable/human_object_scale"
+        android:src="@drawable/object_scale_human"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
