@@ -22,10 +22,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="84dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -39,20 +40,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_narrow_regular"
+                android:paddingVertical="5dp"
                 android:paddingLeft="3dp"
                 android:text="1 : "
                 android:textColor="@color/black"
-                android:textSize="@dimen/numbers_size" />
+                android:textSize="@dimen/calculator_numbers_size" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/scale_factor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_narrow_regular"
+                android:onClick="showScaleMenu"
+                android:paddingVertical="5dp"
                 android:text="100"
                 android:textColor="@color/black"
-                android:textSize="@dimen/numbers_size"
-                android:onClick="showScaleMenu"/>
+                android:textSize="@dimen/calculator_numbers_size" />-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/scale_factor"
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="5dp"
+                android:background="@drawable/button_scales"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+                android:text="100"
+                android:fontFamily="@font/archivo_narrow_regular"
+                android:textSize="@dimen/calculator_numbers_size"
+                android:onClick="showScaleMenu"
+                 />
+
 
         </LinearLayout>
 
@@ -68,9 +86,10 @@
                 android:backgroundTint="@color/black"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:inputType="numberDecimal"
+                android:maxWidth="90dp"
                 android:text="1"
                 android:textCursorDrawable="@drawable/cursor_black"
-                android:textSize="@dimen/numbers_size" />
+                android:textSize="@dimen/calculator_numbers_size" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -78,7 +97,7 @@
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:text="m = "
                 android:textColor="@color/black"
-                android:textSize="@dimen/numbers_size" />
+                android:textSize="@dimen/calculator_numbers_size" />
 
             <EditText
                 android:id="@+id/scaled_unities"
@@ -87,9 +106,10 @@
                 android:backgroundTint="@color/black"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:inputType="numberDecimal"
+                android:maxWidth="90dp"
                 android:text="1"
                 android:textCursorDrawable="@drawable/cursor_black"
-                android:textSize="@dimen/numbers_size" />
+                android:textSize="@dimen/calculator_numbers_size" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,7 +117,7 @@
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:text="cm"
                 android:textColor="@color/black"
-                android:textSize="@dimen/numbers_size" />
+                android:textSize="@dimen/calculator_numbers_size" />
 
         </LinearLayout>
 

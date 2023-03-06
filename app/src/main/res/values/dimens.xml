@@ -7,4 +7,5 @@
     <dimen name="unity_bar_height">2dp</dimen>
     <dimen name="fraction_unity_bar_height">1dp</dimen>
     <dimen name="numbers_size">20sp</dimen>
+    <dimen name="calculator_numbers_size">22sp</dimen>
 </resources>

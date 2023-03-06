@@ -4,6 +4,7 @@ package com.example.graphicruler.views;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graphicruler.R;
 import com.example.graphicruler.controllers.ConfigScaleController;
 import com.example.graphicruler.databinding.ActivityMainBinding;
 
@@ -50,16 +51,29 @@ public class GraphicElementsView {
     }
 
     public void setScale(RulerSetter rulerSetter) {
-        this.setObjectScale(this.getObjectScaleHeight());
+        this.setObjectScale();
         this.setRulers(rulerSetter);
     }
 
-    private void setObjectScale(int objectScaleHeight) {
-        this.activityMainViewBinding.objectScaleView.getLayoutParams().height = objectScaleHeight;
-        this.activityMainViewBinding.objectScaleView.getLayoutParams().width = (int) (objectScaleHeight * 0.333);
+    private void setObjectScale() {
+        this.activityMainViewBinding.objectScaleView.setImageResource(this.setObjectScaleImageResource());
+        this.activityMainViewBinding.objectScaleView.getLayoutParams().height = this.configScaleController.getObjectScaleHeight();
+        this.activityMainViewBinding.objectScaleView.getLayoutParams().width = this.configScaleController.getObjectScaleWidth();
     }
 
-    private int getObjectScaleHeight() {
-        return this.configScaleController.getObjectScaleHeight();
+    private int setObjectScaleImageResource() {
+        if (this.configScaleController.getObjectScaleDrawableId() == 3) {
+            return R.drawable.object_scale_house;
+        }
+        if (this.configScaleController.getObjectScaleDrawableId() == 1) {
+            return R.drawable.object_scale_chair;
+        }
+        else {
+            return R.drawable.object_scale_human;
+        }
     }
+
+    /*private int getObjectScaleHeight() {
+        return this.configScaleController.getObjectScaleHeight();
+    }*/
 }

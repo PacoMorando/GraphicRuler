@@ -30,11 +30,15 @@ public class ScalimeterBoard {
     }
 
     public int getUnitHeight() {
-        return Math.round(this.unitHeight * (this.rulerUnity / this.scale.getHeight())); // QUE LA OPERACION SE HAGA AQUI Y NO EN EL ENUMERADO
+        return Math.round(this.unitHeight * (this.rulerUnity / this.scale.getScaledHeight())); // QUE LA OPERACION SE HAGA AQUI Y NO EN EL ENUMERADO
     }
 
     public int getObjectScaleHeight() {
-        return Math.round(this.unitHeight * (this.rulerUnity / this.scale.getScale()) * 2);//TODO RESOLVER ESTE NUMERO NAGICO... TAL VEZ LO OBJETOS DEBERIAN DE SER ENUMERADOS???
+        return Math.round(this.unitHeight * (this.rulerUnity / this.scale.getScale()) * this.scale.getObjectScale().getHeight());//TODO Tal vez todo esto lo deberia de hacer el enumerado para eliminar el doble get???
+    }
+
+    public int getObjectScaleWidth() {
+        return Math.round(this.unitHeight * (this.rulerUnity / this.scale.getScale()) * this.scale.getObjectScale().getWidth());//TODO Tal vez todo esto lo deberia de hacer el enumerado para eliminar el doble get???
     }
 
     public void setUnitHeight(float deviceHeight) {
@@ -83,5 +87,9 @@ public class ScalimeterBoard {
     public int getGraphicRulerUnitHeight(int position) {
         int[] graphicRulerUnitHeight = {1, 1, 3, 5, 10, 30};
         return graphicRulerUnitHeight[position] * this.getUnitHeight();
+    }
+
+    public int getObjectScaleDrawableId() {
+        return this.scale.getObjectScale().getDrawableId();//arreglar ese doble get
     }
 }

@@ -41,6 +41,5 @@ public class View {
         this.activityMainViewBinding.scaleFactor.setText(String.format("%.0f",scale));//PLANTEARME UN SINGLETON TXTFORMATER
         this.scaleCalculatorView.setScale();
         this.graphicElementsView.setScale(this.scaleMenu.getRulerSetter(scale));
-        this.activityMainViewBinding.objectScaleView.setImageResource(R.drawable.object_scale_chair);
     }
 }

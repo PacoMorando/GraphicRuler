@@ -19,6 +19,10 @@ public class ConfigScaleController extends Controller {
         return this.scalimeterBoard.getObjectScaleHeight();
     }
 
+    public int getObjectScaleWidth() {
+        return this.scalimeterBoard.getObjectScaleWidth();
+    }
+
     public void setUnitHeight(float deviceHeight) {
         this.scalimeterBoard.setUnitHeight(deviceHeight);
     }
@@ -45,5 +49,9 @@ public class ConfigScaleController extends Controller {
 
     public int getGraphicRulerUnitHeight(int position) {
         return this.scalimeterBoard.getGraphicRulerUnitHeight(position);
+    }
+
+    public int getObjectScaleDrawableId() {
+        return this.scalimeterBoard.getObjectScaleDrawableId();
     }
 }
