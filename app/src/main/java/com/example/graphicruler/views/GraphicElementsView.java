@@ -61,12 +61,15 @@ public class GraphicElementsView {
         this.activityMainViewBinding.objectScaleView.getLayoutParams().width = this.configScaleController.getObjectScaleWidth();
     }
 
-    private int setObjectScaleImageResource() {
-        if (this.configScaleController.getObjectScaleDrawableId() == 3) {
+    private int setObjectScaleImageResource() {//esto tal vez se puede refactorizar
+        if (this.configScaleController.getObjectScaleDrawableId() == 4) {
             return R.drawable.object_scale_house;
         }
+        if (this.configScaleController.getObjectScaleDrawableId() == 3) {
+            return R.drawable.object_scale_lamp;
+        }
         if (this.configScaleController.getObjectScaleDrawableId() == 1) {
-            return R.drawable.object_scale_chair;
+            return R.drawable.object_scale_table_lamp;
         }
         else {
             return R.drawable.object_scale_human;

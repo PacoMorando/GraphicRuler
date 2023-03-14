@@ -1,9 +1,10 @@
 package com.example.graphicruler.models;
 
 public enum ObjectScales {
-    CHAIR(0.85f,0.58132f,1),
+    TABLE_LAMP(0.5f,0.34f,1),
     HUMAN_SCALE(2f,0.6f,2),
-    HOUSE(12f,9f,3);
+    LAMP(5.5f,0.7f,3),
+    HOUSE(12f,9f,4);
 
     private final float height;
     private final float width;
