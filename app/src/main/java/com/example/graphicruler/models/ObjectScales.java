@@ -14,7 +14,7 @@ public enum ObjectScales {
         this.height = height;
         this.width = width;
         this.drawableId = drawableId;
-        //quiza podemos setear el ID al inciar la aplicacion con los ids del R.drawable de cada imagen
+        //maybe the ID could be setted at the start of the application la with the ids from the R.drawable for each image
     }
 
     public float getHeight(){

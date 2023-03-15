@@ -28,7 +28,7 @@ public class GraphicElementsView {
 
     private void setRulers(RulerSetter rulerSetter) {
         this.rulerRecyclerAdapter = new RulerRecyclerAdapter(rulerSetter);
-        this.graphicRuler(this.activityMainViewBinding.rulerRecyclerView, this.rulerRecyclerAdapter);//aqui va un new
+        this.graphicRuler(this.activityMainViewBinding.rulerRecyclerView, this.rulerRecyclerAdapter);
         this.graphicRuler(this.activityMainViewBinding.graphicScaleRecyclerView, this.graphicScaleRecyclerAdapter);
     }
 
@@ -61,7 +61,7 @@ public class GraphicElementsView {
         this.activityMainViewBinding.objectScaleView.getLayoutParams().width = this.configScaleController.getObjectScaleWidth();
     }
 
-    private int setObjectScaleImageResource() {//esto tal vez se puede refactorizar
+    private int setObjectScaleImageResource() { //this method can be refactored
         if (this.configScaleController.getObjectScaleDrawableId() == 4) {
             return R.drawable.object_scale_house;
         }
@@ -75,8 +75,4 @@ public class GraphicElementsView {
             return R.drawable.object_scale_human;
         }
     }
-
-    /*private int getObjectScaleHeight() {
-        return this.configScaleController.getObjectScaleHeight();
-    }*/
 }

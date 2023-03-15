@@ -27,7 +27,7 @@ public class ScaleMenu {
         this.scale = scale;
     }
 
-    private String pickSetter() {//este metodo podria mejorar??
+    private String pickSetter() {//this method can be refactored
         if (scale == 100f || scale == 125f) {
             return this.SINGLE_UNITY;
         }

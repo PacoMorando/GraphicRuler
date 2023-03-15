@@ -1,7 +1,5 @@
 package com.example.graphicruler.views;
 
-import android.view.View;
-
 import com.example.graphicruler.R;
 import com.example.graphicruler.controllers.ConfigScaleController;
 

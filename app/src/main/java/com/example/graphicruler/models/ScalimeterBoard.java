@@ -90,6 +90,6 @@ public class ScalimeterBoard {
     }
 
     public int getObjectScaleDrawableId() {
-        return this.scale.getObjectScale().getDrawableId();//arreglar ese doble get
+        return this.scale.getObjectScale().getDrawableId();//correct the double get
     }
 }

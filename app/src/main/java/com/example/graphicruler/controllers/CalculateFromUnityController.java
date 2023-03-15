@@ -12,11 +12,4 @@ public class CalculateFromUnityController extends Controller {
         return formattedNumber(this.scalimeterBoard.calculateFromUnity(unity));
     }
 
-    private String formattedNumber(float number) {
-        String numberFormatted = String.format("%.3f", number);
-        if ((int) number == Float.parseFloat(numberFormatted)) {
-            return String.valueOf((int) number);
-        }
-        return numberFormatted;
-    }
 }

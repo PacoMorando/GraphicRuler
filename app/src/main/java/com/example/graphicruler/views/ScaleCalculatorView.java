@@ -20,6 +20,8 @@ public class ScaleCalculatorView {
         this.calculateFromScaledUnityController = new CalculateFromScaledUnityController(scalimeterBoard);
         this.unities = activityMainViewBinding.unities;
         this.scaledUnities = activityMainViewBinding.scaledUnities;
+        this.unities.addTextChangedListener(this.getUnitiesWatcher());
+        this.scaledUnities.addTextChangedListener(this.getScaledUnitiesWatcher());
     }
 
     public void setScale() {
