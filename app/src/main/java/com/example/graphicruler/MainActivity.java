@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         setContentView(activityMainViewBinding.getRoot());
         this.view = new com.example.graphicruler.views.View(activityMainViewBinding, this);
         hideSystemUI();
-
-        activityMainViewBinding.screenData.setText("By: Saturn Apple Studios1");
     }
 
     private void hideSystemUI() {
