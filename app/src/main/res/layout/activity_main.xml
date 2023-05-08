@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_screen"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -43,23 +43,19 @@
                 android:paddingVertical="5dp"
                 android:paddingLeft="3dp"
                 android:text="1 : "
-                android:textColor="@color/black"
                 android:textSize="@dimen/calculator_numbers_size" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/scale_factor"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                style="@style/ScaleMenuButton.Style"
+                android:fontFamily="@font/archivo_narrow_regular"
+                android:onClick="showScaleMenu"
                 android:paddingVertical="5dp"
                 android:paddingEnd="15dp"
-                android:background="@color/white"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:drawableEnd="@drawable/ic_scale_menu_arrow"
                 android:text="100"
-                android:fontFamily="@font/archivo_narrow_regular"
-                android:textSize="@dimen/calculator_numbers_size"
-                android:onClick="showScaleMenu"
-                 />
+                android:textSize="@dimen/calculator_numbers_size" />
 
 
         </LinearLayout>
@@ -71,12 +67,13 @@
 
             <EditText
                 android:id="@+id/unities"
+                style="@style/EditText.Style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:inputType="numberDecimal"
                 android:maxWidth="90dp"
+                android:minWidth="30dp"
                 android:text="1"
                 android:textCursorDrawable="@drawable/cursor_black"
                 android:textSize="@dimen/calculator_numbers_size" />
@@ -86,17 +83,17 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:text="m = "
-                android:textColor="@color/black"
                 android:textSize="@dimen/calculator_numbers_size" />
 
             <EditText
                 android:id="@+id/scaled_unities"
+                style="@style/EditText.Style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:inputType="numberDecimal"
                 android:maxWidth="90dp"
+                android:minWidth="30dp"
                 android:text="1"
                 android:textCursorDrawable="@drawable/cursor_black"
                 android:textSize="@dimen/calculator_numbers_size" />
@@ -106,7 +103,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:text="cm"
-                android:textColor="@color/black"
                 android:textSize="@dimen/calculator_numbers_size" />
 
         </LinearLayout>
@@ -128,27 +124,28 @@
 
     <TextView
         android:id="@+id/developer_text"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By Saturn Apple Studios"
-        android:textColor="@color/black"
-        android:textSize="@dimen/brand_size"
         android:fontFamily="@font/archivo_narrow_regular"
+        android:text="By Saturn Apple Studios"
+        android:textSize="@dimen/brand_size"
+        android:theme="@style/Theme.GraphicRuler"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.98" />
 
     <ImageView
         android:id="@+id/object_scale_view"
         android:layout_width="240px"
         android:layout_height="800px"
         android:layout_gravity="end"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="70dp"
         android:src="@drawable/object_scale_human"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

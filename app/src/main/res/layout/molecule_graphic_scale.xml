@@ -11,7 +11,7 @@
         android:layout_width="12dp"
         android:layout_height="106px"
         android:layout_gravity="end"
-        android:background="@android:color/black" />
+        style="@style/RulerImageView.Style"/>
 
     <TextView
         android:id="@+id/unit_graphic_scale_number"
@@ -24,7 +24,6 @@
         android:paddingLeft="12dp"
         android:text="12"
         android:textAlignment="textEnd"
-        android:textColor="@color/black"
         android:textSize="@dimen/numbers_size"
         tools:ignore="RtlCompat" />
 

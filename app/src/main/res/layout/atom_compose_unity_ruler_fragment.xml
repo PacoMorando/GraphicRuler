@@ -14,7 +14,7 @@
             android:layout_width="@dimen/fraction_unity_bar_width"
             android:layout_height="@dimen/fraction_unity_bar_height"
             android:layout_gravity="bottom"
-            android:background="@color/black" />
+            style="@style/RulerImageView.Style" />
     </LinearLayout>
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_width="@dimen/fraction_unity_bar_width"
             android:layout_height="@dimen/fraction_unity_bar_height"
             android:layout_gravity="bottom"
-            android:background="@color/black" />
+            style="@style/RulerImageView.Style" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,7 +38,7 @@
             android:layout_width="@dimen/fraction_unity_bar_width"
             android:layout_height="@dimen/fraction_unity_bar_height"
             android:layout_gravity="bottom"
-            android:background="@color/black" />
+            style="@style/RulerImageView.Style"/>
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +50,7 @@
             android:layout_width="@dimen/fraction_unity_bar_width"
             android:layout_height="@dimen/fraction_unity_bar_height"
             android:layout_gravity="bottom"
-            android:background="@color/black" />
+            style="@style/RulerImageView.Style"/>
     </LinearLayout>
 
 
@@ -63,7 +63,7 @@
             android:layout_width="@dimen/middle_unity_bar_width"
             android:layout_height="@dimen/fraction_unity_bar_height"
             android:layout_gravity="bottom"
-            android:background="@color/black" />
+            style="@style/RulerImageView.Style"/>
     </LinearLayout>
 
 </LinearLayout>

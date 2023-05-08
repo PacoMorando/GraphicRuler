@@ -1,6 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <style name="Theme.GraphicRuler" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- hide the statusBar -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
@@ -27,6 +29,7 @@
     <style name="RulerImageView.Style" parent="Theme.GraphicRuler">
         <item name="android:background">@color/white</item>
     </style>
+
     <style name="ScaleMenuButton.Style" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:drawableEnd">@drawable/ic_scale_menu_arrow_night</item>
     </style>
