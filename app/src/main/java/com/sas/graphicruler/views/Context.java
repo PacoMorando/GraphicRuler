@@ -14,9 +14,6 @@ class Context {
     static float getDeviceHeight() {
         return Context.getInstance().getResources().getDisplayMetrics().ydpi;
     }
-    static float getTotalDeviceHeight() {
-        return Context.getInstance().getResources().getDisplayMetrics().heightPixels;
-    }
 
     static int getTotalScreenHeightInInches() {
         return (int) Math.ceil(Context.getInstance().getResources().getDisplayMetrics().heightPixels/Context.getDeviceHeight() + 1);

@@ -47,9 +47,9 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/scale_factor"
+                style="@style/ScaleMenuButton.Style"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                style="@style/ScaleMenuButton.Style"
                 android:fontFamily="@font/archivo_narrow_regular"
                 android:onClick="showScaleMenu"
                 android:paddingVertical="5dp"
@@ -108,19 +108,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/screen_data"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/archivo_narrow_regular"
-        android:text="screen data"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
 
     <TextView
         android:id="@+id/developer_text"
