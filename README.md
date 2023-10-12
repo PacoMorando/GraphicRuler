@@ -1,7 +1,12 @@
 # GraphicRuler
 ![Logo Image](https://raw.githubusercontent.com/PacoMorando/multiplatform-master-mind/000eafa3432b8c41652b23501e721779465e03c4/docs/grapich-ruler/port-graphic-ruler.svg)
 
-## Descrption
+### Index
+- **[Description](#description)**
+- **[User Interface](#user-interface)**
+- **[Application development](#application-development)**
+
+## Description
 An application that uses the system information of the device to draw a ruler with 'physical' accuracy. 
 
 Although there are already other applications in the Play Store that emulate a real-value ruler, the existing ones appear to be designed for general users and generic uses. That's why I decided to design and develop a tool more focused on the way architects and designers use this type of tool.
