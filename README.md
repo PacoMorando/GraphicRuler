@@ -1,5 +1,5 @@
 # GraphicRuler
-![Logo Image](https://raw.githubusercontent.com/PacoMorando/multiplatform-master-mind/000eafa3432b8c41652b23501e721779465e03c4/docs/grapich-ruler/port-graphic-ruler.svg)
+![Logo Image](docs/port-graphic-ruler.svg)
 
 ### Index
 - **[Description](#description)**
@@ -21,11 +21,11 @@ The key aspects for focusing the design were:
 ## User Interface
 |  |  |
 |---|---|
-| ![app screenshot](https://raw.githubusercontent.com/PacoMorando/multiplatform-master-mind/master/docs/grapich-ruler/graphic_ruler_ss1.webp) | ![app screenshot](https://raw.githubusercontent.com/PacoMorando/multiplatform-master-mind/master/docs/grapich-ruler/graphic_ruler_ss2.webp)|
+| ![app screenshot](docs/graphic_ruler_ss1.webp) | ![app screenshot](docs/graphic_ruler_ss2.webp)|
 
 |  |  |
 |---|---|
-| ![app screenshot](https://raw.githubusercontent.com/PacoMorando/multiplatform-master-mind/master/docs/grapich-ruler/graphic_ruler_ss3.webp) | ![app screenshot](https://raw.githubusercontent.com/PacoMorando/multiplatform-master-mind/master/docs/grapich-ruler/graphic_ruler_ss4.webp)|
+| ![app screenshot](docs/graphic_ruler_ss3.webp) | ![app screenshot](docs/graphic_ruler_ss4.webp)|
 
 ## Application development
 
