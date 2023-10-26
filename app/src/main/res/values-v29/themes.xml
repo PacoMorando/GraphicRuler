@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.GraphicRuler" parent="GraphicRuler.Custom">
+        <!-- hide the statusBar -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <!-- prevent from use the auto darkTheme from android10-->
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>
