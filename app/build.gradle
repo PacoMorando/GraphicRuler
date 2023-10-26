@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.sas.graphicruler'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.sas.graphicruler"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 12
         versionName "1.1.2"
 
