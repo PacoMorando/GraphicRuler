@@ -12,7 +12,6 @@ class Context {
     }
 
     static float getDeviceHeight() {
-        //return Context.getInstance().getResources().getDisplayMetrics().ydpi;
         return Context.getInstance().getResources().getDisplayMetrics().densityDpi;
     }
 
