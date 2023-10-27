@@ -12,7 +12,8 @@ class Context {
     }
 
     static float getDeviceHeight() {
-        return Context.getInstance().getResources().getDisplayMetrics().densityDpi;
+        return Context.getInstance().getResources().getDisplayMetrics().ydpi;
+        //return Context.getInstance().getResources().getDisplayMetrics().densityDpi;
     }
 
     static int getTotalScreenHeightInInches() {
